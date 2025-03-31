@@ -1,5 +1,6 @@
-# This is a Repo to store my different LaTeX files, examples, and templates for my own use or for sharing with others.
+# LaTeX Templates Repo
 
+- This is a Repo to store my different LaTeX files, examples, and templates for my own use or for sharing with others.
 - `original-files` is a repo containing the LaTeX template files from [@SeniorMars' repository][senior-mars-repo]. 
 - `notes-template` is a repo adapted from that template to suit my own needs and preferences for taking notes on different topics.
 
