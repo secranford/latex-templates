@@ -1,0 +1,5 @@
+[0] Config.pm:308> INFO - This is Biber 2.20
+[5] Config.pm:311> INFO - Logfile is 'template.blg'
+[67] biber:340> INFO - === Thu Apr  3, 2025, 11:52:56
+[572] Utils.pm:410> ERROR - Cannot find 'template.bcf'!
+[573] Biber.pm:136> INFO - ERRORS: 1

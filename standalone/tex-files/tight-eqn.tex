@@ -1,0 +1,20 @@
+\documentclass[12pt,fleqn,preview,varwidth,border={0mm 1mm 0mm 0mm}]{standalone} 
+% border follows {left bottom right top} can also do border = x to set equal margins, documentation has incorrect order. Can use pt instead of mm too.
+% fleqn is part of amsmath and sets the eqn alignment to be flush with the left (instead of default right), you can then set the math indent to 0 to limit whitespace
+% preview tries to auto detect box and clip white space for standalone
+% varwidth can help limit whitespace too, make sure length of env doesn't extend too far if env adds padding
+
+\usepackage{amsmath}
+\begin{document}
+% Your equation or figure goes here:
+{%this creates group so math indent set only takes place here and not globally
+\setlength{\mathindent}{0pt}
+\begin{varwidth}{.75\linewidth}
+    \begin{align*}
+        \frac{\partial\rho_s}{\partial t} + \frac{\partial(\rho_su_i)}{\partial x_i}      & = -\frac{\partial(\rho_sv_{si})}{\partial x_i} + w_i                         \\
+        u_i                                                                               & = \sum^{ns}_{s=1}\frac{\rho_s}{\rho}u_{si}                                   \\
+        \frac{\partial\rho u_i}{\partial t} + \frac{\partial(\rho u_i u_j)}{\partial x_j} & = -\frac{\partial p}{\partial x_i} + \frac{\partial \tau_{ij}}{\partial x_j}
+    \end{align*}
+\end{varwidth}
+}
+\end{document}
