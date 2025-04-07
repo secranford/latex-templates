@@ -6,8 +6,9 @@
 - `tikz-fig.tex` shows how you can create a figure in TikZ within the standalone class. `tikz-fig.pdf` is the original pdf I then crop the pdf and convert and crop to png separately (png is not from cropped pdf).
 
 ## Usage
-- LaTeX files are located in `tex-files` and images are in `images`.
+- LaTeX files are located in `tex-files` and output images are in `images`.
 - Copy the template you want from the directory and start editing there.
+- Copy the `.gitignore` file from the root repo to ignore aux files
 
 ## Image Conversions
 

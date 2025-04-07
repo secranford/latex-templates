@@ -5,6 +5,12 @@
 - `notes-template` is a repo adapted from that template to suit my own needs and preferences for taking notes on different topics.
 - `standalone` is a repo for using the standalone class to export equations or figures made in LaTeX, i.e. create a pdf of an equation or TikZ figure exactly so it can be inserted in a document or presentation. 
 
+## Usage
+1. Pull down repo.
+2. Copy the directory of the template you want to use, i.e. `notes-template` for taking notes and put it where you intend to use.
+3. Copy the `.gitignore` file from into your copied repo if you plan to use git with it and want to ignore aux files.
+4. There are typically `template` and `example` directories in each directory. You can review the example and copy and use the template files to meet your needs. Delete what you don't want or need.
+
 ## Some good resources:
 
 - [Video][SeniorMars-Notes] on some useful tips for taking notes/doing hw in LaTeX
