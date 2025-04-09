@@ -19,19 +19,7 @@
 \usepackage{enumitem} % for customizing lists
 \usepackage{hyperref,theoremref} % crossreferencing
 
-%--------pdf settings----------------
-\hypersetup{%set pdf metadata here
-	pdftitle={Notes},
-	pdfauthor={Sean Cranford},
-	pdfsubject={Notes Subject},
-	pdfkeywords={Notes Keywords},
-	colorlinks=true, % links show up as set colors
-	linkcolor=doc!90, % link color for internal quantities, i.e. figs
-	citecolor=doc!90, % link color for citations
-	linktoc=all, % all parts of toc are links, i.e. page and section
-	bookmarksnumbered=true, % bookmarks are numbered in pdf tree
-	bookmarksopen=true % bookmarks are open in pdf tree 
-}
+
 \usepackage[most,many,breakable]{tcolorbox} % for colored boxes
 \usepackage[svgnames,x11names]{xcolor} % colors
 \usepackage{varwidth} % for utilizing variable width in cmds etc
@@ -64,7 +52,20 @@
 %   maxnames=6,     % Maximum number of names before 'et al.'
 %   minnames=1      % Minimum names shown when truncating
 
-
+%--------pdf settings----------------
+\hypersetup{%set pdf metadata here
+	pdftitle={Notes},
+	pdfauthor={Sean Cranford},
+	pdfsubject={Notes Subject},
+	pdfkeywords={Notes Keywords},
+	colorlinks=true, % links show up as set colors
+	linkcolor=MyColor, % link color for internal quantities, i.e. figs
+	citecolor=MyColor, % link color for citations
+	urlcolor=MyColor,  % link color for URL (and DOI)
+	linktoc=all, % all parts of toc are links, i.e. page and section
+	bookmarksnumbered=true, % bookmarks are numbered in pdf tree
+	bookmarksopen=true % bookmarks are open in pdf tree 
+}
 
 \usepackage{titletoc} % for customizing toc
 \usepackage[nottoc]{tocbibind} % for adding bibliography to toc
@@ -728,14 +729,14 @@
 \titlecontents{chapter}[3.7pc]
 {\addvspace{30pt}%
 	\begin{tikzpicture}[remember picture, overlay]%
-		\draw[fill=doc!60,draw=doc!60] (-7,-.1) rectangle (-0.9,.5);%
+		\draw[fill=MyColor,draw=MyColor] (-7,-.1) rectangle (-0.9,.5);%
 		\pgftext[left,x=-3.7cm,y=0.2cm]{\color{white}\Large\sc\bfseries Chapter\ \thecontentslabel};%
-	\end{tikzpicture}\color{doc!60}\large\sc\bfseries}%
+	\end{tikzpicture}\color{MyColor}\large\sc\bfseries}%
 {}
 {}
 {\;\titlerule\;\large\sc\bfseries Page \thecontentspage
 	\begin{tikzpicture}[remember picture, overlay]
-		\draw[fill=doc!60,draw=doc!60] (2pt,0) rectangle (4,0.1pt);
+		\draw[fill=MyColor,draw=MyColor] (2pt,0) rectangle (4,0.1pt);
 	\end{tikzpicture}}%
 \titlecontents{section}[3.7pc]
 {\addvspace{2pt}}
@@ -755,8 +756,8 @@
 	\chapter*{%
 	  \vspace*{-20\p@}%
 	  \begin{tikzpicture}[remember picture, overlay]%
-		  \pgftext[right,x=15cm,y=0.2cm]{\color{doc!60}\Huge\sc\bfseries \contentsname};%
-		  \draw[fill=doc!60,draw=doc!60] (13,-.75) rectangle (20,1);%
+		  \pgftext[right,x=15cm,y=0.2cm]{\color{MyColor}\Huge\sc\bfseries \contentsname};%
+		  \draw[fill=MyColor,draw=MyColor] (13,-.75) rectangle (20,1);%
 		  \clip (13,-.75) rectangle (20,1);
 		  \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
 	  \end{tikzpicture}}%
