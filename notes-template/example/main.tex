@@ -1,18 +1,18 @@
 \documentclass{report}
 
-\input{preamble}
+\input{preamble} %this is where the packages are loaded
 \input{macros}
 \input{letterfonts}
 
 \title{\Huge{Some Class}\\Random Examples}
-\author{\huge{Your Name}}
-\date{}
+\author{\huge{Sean Cranford}}
+\date{\today} %change today to a date if you want
 
 \begin{document}
 
 \maketitle
-\newpage% or \cleardoublepage
-% \pdfbookmark[<level>]{<title>}{<dest>}
+\newpage
+
 \pdfbookmark[section]{\contentsname}{toc}
 \tableofcontents
 \pagebreak
@@ -53,7 +53,7 @@
 \end{myproof}
 
 \cor{}{By the result of the proof, we can then show...}
-\mlemma{}{Suppose $\vec{v_1}, \dots, \vec{v_n} \in \RR[n]$ is subspace of $\RR^n$.}
+\mlemma{}{Suppose $\vec{v_1}, \dots, \vec{v_n} \in \bbR^n$ is subspace of $bbR^n$.}
 \mprop{}{$1 + 1 = 2$.}
 
 \section{Random}

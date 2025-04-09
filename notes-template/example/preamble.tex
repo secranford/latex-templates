@@ -1,41 +1,77 @@
+\usepackage[utf8]{inputenc} % for utf-8 encoding, use this for all files
+\usepackage[T1]{fontenc} % for T1 font encoding, use this for all files
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
-\usepackage{amsmath,amsfonts,amsthm,amssymb,mathtools}
-\usepackage[varbb]{newpxmath}
-\usepackage{xfrac}
-\usepackage[makeroom]{cancel}
-\usepackage{mathtools}
-\usepackage{bookmark}
-\usepackage{enumitem}
-\usepackage{hyperref,theoremref}
-\hypersetup{
-	pdftitle={assignment},
-	colorlinks=true, linkcolor=doc!90,
-	bookmarksnumbered=true,
-	bookmarksopen=true
+\usepackage{amsmath,amsfonts,amsthm,amssymb,mathtools} % math packs
+\usepackage[varbb]{newpxmath} % uses pxmath's varbb 
+\usepackage{xfrac} % use /sfrac for slanted fractions
+\usepackage{graphicx} % for including graphics
+\usepackage{float} % for placing figures exactly
+\usepackage{caption} % for better control of fig captions
+\usepackage{subcaption} % for subfigures, subfigure package is deprecated
+\usepackage[makeroom]{cancel} % show terms cancel
+\usepackage{bookmark} % helps with pdf bookmarks
+\usepackage{titlesec} % for customizing section titles
+\usepackage{enumitem} % for customizing lists
+\usepackage{hyperref,theoremref} % crossreferencing
+
+%--------pdf settings----------------
+\hypersetup{%set pdf metadata here
+	pdftitle={Notes},
+	pdfauthor={Sean Cranford},
+	pdfsubject={Notes Subject},
+	pdfkeywords={Notes Keywords},
+	colorlinks=true, % links show up as set colors
+	linkcolor=doc!90, % link color for internal quantities, i.e. figs
+	citecolor=doc!90, % link color for citations
+	linktoc=all, % all parts of toc are links, i.e. page and section
+	bookmarksnumbered=true, % bookmarks are numbered in pdf tree
+	bookmarksopen=true % bookmarks are open in pdf tree 
 }
-\usepackage[most,many,breakable]{tcolorbox}
-\usepackage{xcolor}
-\usepackage{varwidth}
-\usepackage{varwidth}
+\usepackage[most,many,breakable]{tcolorbox} % for colored boxes
+\usepackage[usenames,svgnames,x11names]{xcolor} % colors
+\usepackage{varwidth} % for utilizing variable width in cmds etc
 \usepackage{etoolbox}
-%\usepackage{authblk}
 \usepackage{nameref}
-\usepackage{multicol,array}
-\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{multicol,array} % for multi-column pages and better tables
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e} % special env for writing algorithms
 \usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
-\usepackage{import}
-\usepackage{xifthen}
-\usepackage{pdfpages}
-\usepackage{transparent}
-\usepackage{chngcntr}
+\usepackage{import} % for importing files, no need to set path prefix for subdir if import is used
+% can be useful to use graphicspath instead of import
+%\usepackage{xifthen} 
+\usepackage{transparent} % adjust opacity of text and graphics
+\usepackage{chngcntr} % for changing counter
 \usepackage{tikz}
-\usepackage{titletoc}
+
+%--------bib settings----------------
+\usepackage[ % needed for bibliography
+	backend=biber, % use biber for bibliography
+	style=ieee, % use IEEE style, citations fail if no style is given
+	sorting=none % sort by order of appearance, IEEE
+]{biblatex}
+
+% % Options for biblatex
+%   doi=false,      % Disable DOI display (or set to true if preferred)
+%   isbn=false,     % Do not show ISBN numbers
+%   eprint=false,   % Hide eprint information
+%   maxnames=6,     % Maximum number of names before 'et al.'
+%   minnames=1      % Minimum names shown when truncating
+
+%--------add ref file----------------
+\addbibresource{references.bib} % add your bib file here
+
+\usepackage{titletoc} % for customizing toc
+\usepackage[nottoc]{tocbibind} % for adding bibliography to toc
+\usepackage{fancyhdr} % for custom headers and footers
+\usepackage{fancyvrb} % for fancy verbatim
+\usepackage{lipsum} % for dummy text
+
+\input{colors.tex} % use the colors defined in colors.tex
 
 \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
 \SetCommentSty{mycommfont}
 \newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./figures/}{#1.pdf_tex}
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
 }
 
 \usepackage{tikzsymbols}
@@ -49,14 +85,14 @@
 \tikzstyle{c} = [circle,fill=black,scale=0.5]
 \tikzstyle{b} = [draw, thick, black, -]
 \tikzset{
-    vertex/.style={
-        circle,
-        draw,
-        minimum size=6mm,
-        inner sep=0pt
-    }
+	vertex/.style={
+			circle,
+			draw,
+			minimum size=6mm,
+			inner sep=0pt
+		}
 }
-\renewcommand\qedsymbol{$\Laughey$}
+\renewcommand\qedsymbol{$\Laughey$} %qed symbol
 
 %\usepackage{import}
 %\usepackage{xifthen}
@@ -64,32 +100,6 @@
 %\usepackage{transparent}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% SELF MADE COLORS
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\definecolor{doc}{RGB}{0,60,110}
-\definecolor{myg}{RGB}{56, 140, 70}
-\definecolor{myb}{RGB}{45, 111, 177}
-\definecolor{myr}{RGB}{199, 68, 64}
-\definecolor{mytheorembg}{HTML}{F2F2F9}
-\definecolor{mytheoremfr}{HTML}{00007B}
-\definecolor{mylemmabg}{HTML}{FFFAF8}
-\definecolor{mylemmafr}{HTML}{983b0f}
-\definecolor{mypropbg}{HTML}{f2fbfc}
-\definecolor{mypropfr}{HTML}{191971}
-\definecolor{myexamplebg}{HTML}{F2FBF8}
-\definecolor{myexamplefr}{HTML}{88D6D1}
-\definecolor{myexampleti}{HTML}{2A7F7F}
-\definecolor{mydefinitbg}{HTML}{E5E5FF}
-\definecolor{mydefinitfr}{HTML}{3F3FA3}
-\definecolor{notesgreen}{RGB}{0,162,0}
-\definecolor{myp}{RGB}{197, 92, 212}
-\definecolor{mygr}{HTML}{2C3338}
-\definecolor{myred}{RGB}{127,0,0}
-\definecolor{myyellow}{RGB}{169,121,69}
-\definecolor{myexercisebg}{HTML}{F2FBF8}
-\definecolor{myexercisefg}{HTML}{88D6D1}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % TCOLORBOX SETUPS
@@ -651,34 +661,34 @@
 \newsavebox\diffdbox
 \newcommand{\slantedromand}{{\mathpalette\makesl{d}}}
 \newcommand{\makesl}[2]{%
-\begingroup
-\sbox{\diffdbox}{$\mathsurround=0pt#1\mathrm{#2}$}%
-\pdfsave
-\pdfsetmatrix{1 0 0.2 1}%
-\rlap{\usebox{\diffdbox}}%
-\pdfrestore
-\hskip\wd\diffdbox
-\endgroup
+	\begingroup
+	\sbox{\diffdbox}{$\mathsurround=0pt#1\mathrm{#2}$}%
+	\pdfsave
+	\pdfsetmatrix{1 0 0.2 1}%
+	\rlap{\usebox{\diffdbox}}%
+	\pdfrestore
+	\hskip\wd\diffdbox
+	\endgroup
 }
 \newcommand{\dd}[1][]{\ensuremath{\mathop{}\!\ifstrempty{#1}{%
-\slantedromand\@ifnextchar^{\hspace{0.2ex}}{\hspace{0.1ex}}}%
-{\slantedromand\hspace{0.2ex}^{#1}}}}
+			\slantedromand\@ifnextchar^{\hspace{0.2ex}}{\hspace{0.1ex}}}%
+		{\slantedromand\hspace{0.2ex}^{#1}}}}
 \ProvideDocumentCommand\dv{o m g}{%
-  \ensuremath{%
-    \IfValueTF{#3}{%
-      \IfNoValueTF{#1}{%
-        \frac{\dd #2}{\dd #3}%
-      }{%
-        \frac{\dd^{#1} #2}{\dd #3^{#1}}%
-      }%
-    }{%
-      \IfNoValueTF{#1}{%
-        \frac{\dd}{\dd #2}%
-      }{%
-        \frac{\dd^{#1}}{\dd #2^{#1}}%
-      }%
-    }%
-  }%
+	\ensuremath{%
+		\IfValueTF{#3}{%
+			\IfNoValueTF{#1}{%
+				\frac{\dd #2}{\dd #3}%
+			}{%
+				\frac{\dd^{#1} #2}{\dd #3^{#1}}%
+			}%
+		}{%
+			\IfNoValueTF{#1}{%
+				\frac{\dd}{\dd #2}%
+			}{%
+				\frac{\dd^{#1}}{\dd #2^{#1}}%
+			}%
+		}%
+	}%
 }
 \providecommand*{\pdv}[3][]{\frac{\partial^{#1}#2}{\partial#3^{#1}}}
 %  - others
