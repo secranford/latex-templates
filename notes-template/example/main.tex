@@ -1,5 +1,7 @@
 \documentclass[12pt,letterpaper]{report}
 
+\setcounter{tocdepth}{1} % Dont go deeper than sections in the toc
+
 \input{preamble.tex} %this is where the packages are loaded
 
 
@@ -16,12 +18,8 @@
 \tableofcontents
 \pagebreak
 
-\include{chapters/ch1}
-\chapter{Test}
-\section{Test Chapter}
-testing a new chapter
-\section{Test Make}
-testing make and testing cite \cite{candlerRateEffectsHypersonic2019}
+\include{chapters/ch1.tex}
+\include{chapters/ch2.tex}
 
 \newpage
 \printbibliography[heading=bibintoc] % prints bib and adds to toc

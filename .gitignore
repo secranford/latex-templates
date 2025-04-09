@@ -1,3 +1,6 @@
+# Tells git to ignore the aux files
+# comment or delete the line below for when you want the final pdf added, otherwise you don't really want git to track the binary changes 
+main.pdf
 *.aux
 *.log
 *.toc
@@ -8,3 +11,9 @@
 *.blg
 *.fdb_latexmk
 *.fls
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*.lof
+*.lot
