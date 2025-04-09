@@ -1,9 +1,14 @@
 \usepackage[utf8]{inputenc} % for utf-8 encoding, use this for all files
 \usepackage[T1]{fontenc} % for T1 font encoding, use this for all files
-\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
+\usepackage[letterpaper,
+	top=1in,bottom=1in,
+	inner=1.5in,outer=1in,
+	includehead]{geometry}
+%\usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
 \usepackage{amsmath,amsfonts,amsthm,amssymb,mathtools} % math packs
 \usepackage[varbb]{newpxmath} % uses pxmath's varbb 
 \usepackage{xfrac} % use /sfrac for slanted fractions
+\usepackage{tikz} % for drawing
 \usepackage{graphicx} % for including graphics
 \usepackage{float} % for placing figures exactly
 \usepackage{caption} % for better control of fig captions
@@ -28,26 +33,29 @@
 	bookmarksopen=true % bookmarks are open in pdf tree 
 }
 \usepackage[most,many,breakable]{tcolorbox} % for colored boxes
-\usepackage[usenames,svgnames,x11names]{xcolor} % colors
+\usepackage[svgnames,x11names]{xcolor} % colors
 \usepackage{varwidth} % for utilizing variable width in cmds etc
 \usepackage{etoolbox}
-\usepackage{nameref}
+\usepackage{nameref} % use to make refs of named things i.e. Chapters
 \usepackage{multicol,array} % for multi-column pages and better tables
+\usepackage{booktabs} % Pretty tables, provides \toprule, \midrule, \bottomrule
+\usepackage{multirow}
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e} % special env for writing algorithms
 \usepackage{comment} % enables the use of multi-line comments (\ifx \fi) 
 \usepackage{import} % for importing files, no need to set path prefix for subdir if import is used
 % can be useful to use graphicspath instead of import
 %\usepackage{xifthen} 
 \usepackage{transparent} % adjust opacity of text and graphics
-\usepackage{chngcntr} % for changing counter
-\usepackage{tikz}
+\usepackage{chngcntr} % for changing page counter
+\usepackage[onehalfspacing]{setspace} % for line spacing
+
 
 %--------bib settings----------------
 \usepackage[ % needed for bibliography
 	backend=biber, % use biber for bibliography
 	style=ieee, % use IEEE style, citations fail if no style is given
 	sorting=none % sort by order of appearance, IEEE
-]{biblatex}
+]{biblatex} % WILL CAUSE ERRORS IF NO BIB FILE IS GIVEN
 
 % % Options for biblatex
 %   doi=false,      % Disable DOI display (or set to true if preferred)
@@ -56,8 +64,7 @@
 %   maxnames=6,     % Maximum number of names before 'et al.'
 %   minnames=1      % Minimum names shown when truncating
 
-%--------add ref file----------------
-\addbibresource{references.bib} % add your bib file here
+
 
 \usepackage{titletoc} % for customizing toc
 \usepackage[nottoc]{tocbibind} % for adding bibliography to toc
@@ -65,7 +72,6 @@
 \usepackage{fancyvrb} % for fancy verbatim
 \usepackage{lipsum} % for dummy text
 
-\input{colors.tex} % use the colors defined in colors.tex
 
 \newcommand\mycommfont[1]{\footnotesize\ttfamily\textcolor{blue}{#1}}
 \SetCommentSty{mycommfont}
@@ -94,10 +100,14 @@
 }
 \renewcommand\qedsymbol{$\Laughey$} %qed symbol
 
-%\usepackage{import}
-%\usepackage{xifthen}
-%\usepackage{pdfpages}
-%\usepackage{transparent}
+%--------add ref file----------------
+\addbibresource{references.bib} % add your bib file here, needed to compile if using biblatex
+
+%--------custom files----------------
+\input{colors.tex} % use the colors defined in colors.tex
+\input{macros.tex} % use the macros defined in macros.tex
+\input{letterfonts.tex} % use the fonts defined in letterfonts.tex
+
 
 
 
@@ -624,8 +634,13 @@
 \newcommand{\pf}[2]{\begin{myproof}[#1]#2\end{myproof}}
 \newcommand{\nt}[1]{\begin{note}#1\end{note}}
 
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+\DeclareRobustCommand*\circled[1]{%
+	\tikz[baseline=(char.base)]{%
+		\node[shape=circle,draw,inner sep=1pt] (char) {#1};%
+	}%
+}
+% \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+% 		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
 \newcommand\getcurrentref[1]{%
 	\ifnumequal{\value{#1}}{0}
 	{??}
