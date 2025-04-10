@@ -15,7 +15,11 @@
 \newpage
 
 \pdfbookmark[section]{\contentsname}{toc}
-\tableofcontents
+
+{
+	\hypersetup{linkcolor=MyColor} % links in the toc match colorstyle
+	\tableofcontents
+}
 \pagebreak
 
 \include{chapters/ch1.tex}

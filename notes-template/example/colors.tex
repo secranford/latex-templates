@@ -2,12 +2,16 @@
 % SELF MADE COLORS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Structure: \definecolor{<name>}{<model>}{<specification>}
+% model: RGB, CMYK, HTML, etc., HTML needs all caps
 % when using colors in document, ! is used for color blends
 % ex: red!40 uses default color, so becomes 40% red and 60% white
 % ex: red!30!blue uses 30% red and 70% blue
 
 % use definecolor to create new colors
 \definecolor{doc}{RGB}{0,60,110}
+\definecolor{Zgreen}{RGB}{0, 102, 102}
+\definecolor{Umaroon}{RGB}{91, 0, 19}
+\definecolor{Uyellow}{RGB}{255, 183, 30}
 \definecolor{myg}{RGB}{56, 140, 70}
 \definecolor{myb}{RGB}{45, 111, 177}
 \definecolor{myr}{RGB}{199, 68, 64}
@@ -31,5 +35,6 @@
 \definecolor{myexercisefg}{HTML}{88D6D1}
 
 % use colorlet to define a color based on another, good way to create color variables to reuse throughout document
-
-\colorlet{MyColor}{DodgerBlue}
+\colorlet{MyColor}{Zgreen}
+% \colorlet{MyColor}{Umaroon}
+\colorlet{LinkColor}{DodgerBlue}
