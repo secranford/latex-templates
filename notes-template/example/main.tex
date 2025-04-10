@@ -1,4 +1,4 @@
-\documentclass[12pt,letterpaper]{report}
+\documentclass[12pt,letterpaper,twoside]{report} % single side doc default, use twoside for double side. This will trigger conditionals I have set.
 
 \setcounter{tocdepth}{1} % Dont go deeper than sections in the toc
 
@@ -16,16 +16,25 @@
 
 \pdfbookmark[section]{\contentsname}{toc}
 
+\pagenumbering{roman} % roman page numbers for front matter
+
 {
 	\hypersetup{linkcolor=MyColor} % links in the toc match colorstyle
 	\tableofcontents
 }
 \pagebreak
 
+
+\pagenumbering{arabic} % arabic page numbers for main matter
+
 \include{chapters/ch1.tex}
 \include{chapters/ch2.tex}
 
 \newpage
-\printbibliography[heading=bibintoc] % prints bib and adds to toc
+\begin{singlespace} % bib should be single spaced
+	\printbibliography[heading=bibintoc] % prints bib and adds to toc
+\end{singlespace}
+
+
 \end{document}
 
