@@ -4,6 +4,7 @@
 - `original-files` is a repo containing the LaTeX template files from [@SeniorMars' repository][senior-mars-repo]. 
 - `notes-template` is a repo adapted from that template to suit my own needs and preferences for taking notes on different topics.
 - `standalone` is a repo for using the standalone class to export equations or figures made in LaTeX, i.e. create a pdf of an equation or TikZ figure exactly so it can be inserted in a document or presentation. 
+- `latex-workshop-settings.json` are the VS Code specific settings I use for formatting and LaTeX workshop.
 
 ## Usage
 1. Pull down repo.
