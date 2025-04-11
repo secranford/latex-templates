@@ -62,6 +62,13 @@
 %   maxnames=6,     % Maximum number of names before 'et al.'
 %   minnames=1      % Minimum names shown when truncating
 
+\defbibheading{mybibheading}{% name to call in print is mybibheading
+	% We explicitly create an UNNUMBERED chapter so it follows the non chapter toc settings down below
+	\chapter*{Bibliography}%
+	% We still want an entry in the TOC, so we add it:
+	\addcontentsline{toc}{chapter*}{Bibliography}%
+}
+
 %--------pdf settings----------------
 \hypersetup{%set pdf metadata here
 	pdftitle={Notes},
@@ -775,18 +782,40 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \contentsmargin{0cm}
+
+% Numbered chapters - big color bar
 \titlecontents{chapter}[3.7pc]
-{\addvspace{30pt}%
+{
+	\addvspace{30pt}%
 	\begin{tikzpicture}[remember picture, overlay]%
 		\draw[fill=MyColor,draw=MyColor] (-7,-.1) rectangle (-0.9,.5);%
 		\pgftext[left,x=-3.7cm,y=0.2cm]{\color{white}\Large\sc\bfseries Chapter\ \thecontentslabel};%
-	\end{tikzpicture}\color{MyColor}\large\sc\bfseries}%
-{}
-{}
-{\;\titlerule\;\large\sc\bfseries Page \thecontentspage
+	\end{tikzpicture}\color{MyColor}\large\sc\bfseries
+}%
+{} % no special code before the chapter label
+{} % no special code after
+{
+	\;\titlerule\;\large\sc\bfseries Page \thecontentspage
 	\begin{tikzpicture}[remember picture, overlay]
 		\draw[fill=MyColor,draw=MyColor] (2pt,0) rectangle (4,0.1pt);
-	\end{tikzpicture}}%
+	\end{tikzpicture}
+}%
+
+% Unnumbered chapters (like Bibliography) - no big color bar
+\titlecontents{chapter*}[3.7pc]
+{%
+	\addvspace{30pt}%
+	\large\sc\bfseries
+}
+{} % no "Chapter <number>" label
+{} % no special after
+{
+	\;\color{MyColor}\titlerule\;\large\sc\bfseries Page \thecontentspage
+	\begin{tikzpicture}[remember picture, overlay]
+		\draw[fill=MyColor,draw=MyColor] (2pt,0) rectangle (4,0.1pt);
+	\end{tikzpicture}
+}
+
 \titlecontents{section}[3.7pc]
 {\addvspace{2pt}}
 {\contentslabel[\thecontentslabel]{2pc}}
@@ -812,3 +841,4 @@
 	  \end{tikzpicture}}%
 	\@starttoc{toc}}
 \makeatother
+

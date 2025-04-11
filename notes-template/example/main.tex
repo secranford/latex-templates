@@ -30,9 +30,14 @@
 \include{chapters/ch1.tex}
 \include{chapters/ch2.tex}
 
+
+\appendix % this is where the appendix starts
+\include{appendix/appendix1.tex}
+
 \newpage
 \begin{singlespace} % bib should be single spaced
-	\printbibliography[heading=bibintoc] % prints bib and adds to toc
+	% \printbibliography[heading=bibintoc] % prints bib and adds to toc
+	\printbibliography[heading=mybibheading] % prints bib as non chapter
 \end{singlespace}
 
 
