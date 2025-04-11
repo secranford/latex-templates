@@ -50,8 +50,9 @@
 %--------bib settings----------------
 \usepackage[ % needed for bibliography
 	backend=biber, % use biber for bibliography
-	style=numeric-comp, % citations fail if no style is given, new-aiaa is a bibtex style file and you must download it to use but then you cannot use biber
-	sorting=none % sort by order of appearance, IEEE
+	style=aiaa, % citations fail if no style is given, new-aiaa is a bibtex style file and you must download it to use but then you cannot use biber
+	sorting=none, % sort by order of appearance, IEEE
+	sortcites=true % compress mult citations within a single bracket if style allows
 ]{biblatex} % WILL CAUSE ERRORS IF NO BIB FILE IS GIVEN
 
 % % Options for biblatex
