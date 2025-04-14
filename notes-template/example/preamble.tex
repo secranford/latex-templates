@@ -43,6 +43,8 @@
 % can be useful to use graphicspath instead of import
 %\usepackage{xifthen} 
 \usepackage{transparent} % adjust opacity of text and graphics
+\usepackage{contour} % for contouring text
+\contourlength{0.5pt} % set contour length, for outlines on text
 \usepackage{chngcntr} % for changing page counter
 \usepackage[onehalfspacing]{setspace} % for line spacing
 
@@ -85,6 +87,7 @@
 % bookmarksopen=true % bookmarks are open in pdf tree 
 
 \usepackage{titletoc} % for customizing toc
+\usepackage[titletoc]{appendix} % for customizing appendix
 \usepackage[nottoc]{tocbibind} % for adding bibliography to toc
 \usepackage{fancyvrb} % for fancy verbatim
 \usepackage{lipsum} % for dummy text
@@ -781,64 +784,138 @@
 % TABLE OF CONTENTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\contentsmargin{0cm}
+% Compute the Text Block Edges (Flexible Settings)
+%
+% The left edge of the text block is:
+\newdimen\TOCLeft
+\TOCLeft=\dimexpr .5\textwidth + \oddsidemargin \relax
+%
+% The right edge is:
+\newdimen\TOCRight
+\TOCRight=\dimexpr \oddsidemargin + \textwidth -.125in \relax
+%
+% These dimensions let the header color bar be drawn exactly within the text block.
+%----------------------------------------------------------------
 
-% Numbered chapters - big color bar
-\titlecontents{chapter}[3.7pc]
-{
-	\addvspace{30pt}%
-	\begin{tikzpicture}[remember picture, overlay]%
-		\draw[fill=MyColor,draw=MyColor] (-7,-.1) rectangle (-0.9,.5);%
-		\pgftext[left,x=-3.7cm,y=0.2cm]{\color{white}\Large\sc\bfseries Chapter\ \thecontentslabel};%
-	\end{tikzpicture}\color{MyColor}\large\sc\bfseries
-}%
-{} % no special code before the chapter label
-{} % no special code after
-{
-	\;\titlerule\;\large\sc\bfseries Page \thecontentspage
-	\begin{tikzpicture}[remember picture, overlay]
-		\draw[fill=MyColor,draw=MyColor] (2pt,0) rectangle (4,0.1pt);
-	\end{tikzpicture}
-}%
 
-% Unnumbered chapters (like Bibliography) - no big color bar
-\titlecontents{chapter*}[3.7pc]
+%----------------------------------------------------------------
+% Other Dimension Settings for TOC Entries
+%----------------------------------------------------------------
+\newdimen\TOCindent % indent for ToC entries, where color bar starts
+\TOCindent=3.7pc
+
+\newdimen\chapboxwidth % width of the chapter box
+\chapboxwidth=3.8cm
+
+\newdimen\secnumwidth
+\secnumwidth=1.2cm
+
+\newdimen\boxgap
+\boxgap=0.5cm
+
+\newdimen\titleindent
+\titleindent=\chapboxwidth
+\advance\titleindent by \boxgap
+
+\contentsmargin{0cm} % make sure margins are handled by doc variables not titletoc settings
+
+%----------------------------------------------------------------
+% Customize the TOC Entries using titletoc
+%----------------------------------------------------------------
+\makeatletter
+
+% Chapter entries: Draw a colored box that contains “Chapter ⟨number⟩.”
+\titlecontents{chapter}[\TOCindent]%
 {%
 	\addvspace{30pt}%
-	\large\sc\bfseries
-}
-{} % no "Chapter <number>" label
-{} % no special after
-{
-	\;\color{MyColor}\titlerule\;\large\sc\bfseries Page \thecontentspage
+	\begin{tikzpicture}[baseline=(C.base)]
+		% Draw the chapter box with a border.
+		% "line width=1pt" adds a 1pt-thick border (which you can change or set a different draw color).
+		\draw[fill=MyColor, draw=black, line width=1pt] (0,-0.1cm) rectangle ++(\chapboxwidth,0.7cm);
+		% Place the chapter label (e.g. "Chapter 1") inside the box.
+		% Here we name the node (C) so that baseline=(C.base) is defined.
+		\node[anchor=west, text=white, font=\sc\bfseries\Large] (C) at (0.5cm,0.2cm)
+		{\@chapapp\ \thecontentslabel};
+	\end{tikzpicture}\quad%
+	\color{MyColor}\large\sc\bfseries
+}%
+{}% Code before the chapter title (none here)
+{}% Code after the chapter title (none)
+{%
+	\;\titlerule\;\large\sc\bfseries Page \thecontentspage%
+}%
+
+% Unnumbered chapters (such as Bibliography):
+\titlecontents{chapter*}[\TOCindent]%
+{%
+	\addvspace{30pt}\large\sc\bfseries%
+}%
+{}%
+{}%
+{%
+	\;\textcolor{MyColor}{\titlerule\ Page \thecontentspage}%
 	\begin{tikzpicture}[remember picture, overlay]
-		\draw[fill=MyColor,draw=MyColor] (2pt,0) rectangle (4,0.1pt);
-	\end{tikzpicture}
-}
+		\draw[fill=MyColor,draw=black, line width=1pt] (2pt,0) rectangle (4pt,0.1pt);
+	\end{tikzpicture}%
+}%
 
-\titlecontents{section}[3.7pc]
-{\addvspace{2pt}}
-{\contentslabel[\thecontentslabel]{2pc}}
-{}
-{\hfill\small \thecontentspage}
-[]
-\titlecontents*{subsection}[3.7pc]
-{\addvspace{-1pt}\small}
-{}
-{}
-{\ --- \small\thecontentspage}
-[ \textbullet\ ][]
+% Section entries: Print the section number in a fixed-width area (in black)
+\titlecontents{section}[\TOCindent]%
+{%
+	\addvspace{2pt}\small%
+}%
+{%
+	\makebox[\secnumwidth][r]{\thecontentslabel\quad}%
+}%
+{}%
+{%
+	\hfill\small\textcolor{MyColor}{\thecontentspage}%
+}%
+[]%
 
-\makeatletter
+% Subsection entries: (if needed, left unchanged)
+\titlecontents*{subsection}[\TOCindent]%
+{%
+	\addvspace{-1pt}\small%
+}%
+{}%
+{}%
+{\,---\small\textcolor{MyColor}{\thecontentspage}}
+[ \textbullet\ ]%
+
+%----------------------------------------------------------------
+% Custom TOC Header:
+%
+% This header consists of a colored bar (drawn with TikZ) that spans exactly
+% the text block (from \TOCLeft to \TOCRight). Inside the bar, the word “Contents” is
+% printed. The bar’s right edge now matches the right edge of the text block.
+%
+% The code below:
+%  - Uses \TOCLeft and \TOCRight to define the horizontal extents.
+%  - Draws the box from (\TOCLeft, -0.75cm) to (\TOCRight, 1cm).
+%  - Places the header text so that it is centered in the box.
+%
+% To add a border to the header box, simply include a border option (like line width) in the \draw command.
+%----------------------------------------------------------------
 \renewcommand{\tableofcontents}{%
 	\chapter*{%
 	  \vspace*{-20\p@}%
-	  \begin{tikzpicture}[remember picture, overlay]%
-		  \pgftext[right,x=15cm,y=0.2cm]{\color{MyColor}\Huge\sc\bfseries \contentsname};%
-		  \draw[fill=MyColor,draw=MyColor] (13,-.75) rectangle (20,1);%
-		  \clip (13,-.75) rectangle (20,1);
-		  \pgftext[right,x=15cm,y=0.2cm]{\color{white}\Huge\sc\bfseries \contentsname};%
-	  \end{tikzpicture}}%
-	\@starttoc{toc}}
+	  \begin{tikzpicture}[remember picture, overlay]
+		  % Draw the header box spanning from \TOCLeft to \TOCRight with custom shading and border:
+		  \draw[shading=axis, left color=MyColor, right color=white, draw=black, drop shadow, line width=1.5pt]
+		  (\TOCLeft,-0.75cm) rectangle (\TOCRight,1cm);
+		  \clip (\TOCLeft,-0.75cm) rectangle (\TOCRight,1cm);
+		  % Place the header text ("Contents") outlined in black and filled in white,
+		  % centered within the header box.
+		  \node[anchor=center,
+			  text=white,
+			  font=\Huge\sc\bfseries]
+		  at ($({\TOCLeft},0)!0.5!({\TOCRight},0)+(0,0.2cm)$)
+		  {\contour{black}{\contentsname}};
+	  \end{tikzpicture}%
+	 }%
+	\@starttoc{toc}%
+}
 \makeatother
+
 

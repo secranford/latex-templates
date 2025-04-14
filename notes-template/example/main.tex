@@ -1,4 +1,4 @@
-\documentclass[12pt,letterpaper,twoside]{report} % single side doc default, use twoside for double side. This will trigger conditionals I have set.
+\documentclass[12pt,letterpaper,oneside]{report} % single side doc default, use twoside for double side. This will trigger conditionals I have set.
 
 \setcounter{tocdepth}{1} % Dont go deeper than sections in the toc
 
@@ -19,7 +19,7 @@
 \pagenumbering{roman} % roman page numbers for front matter
 
 {
-	\hypersetup{linkcolor=MyColor} % links in the toc match colorstyle
+	\hypersetup{linkcolor=TOCColor} % links in the toc match set color
 	\tableofcontents
 }
 \pagebreak
@@ -32,14 +32,47 @@
 
 
 \appendix % this is where the appendix starts
+
+\titlecontents{chapter}[\TOCindent] % change the toc for the appendix, see preamble
+{%
+	\addvspace{30pt}%
+	\begin{tikzpicture}[baseline=(C.base)]
+		\draw[fill=white, draw=white, line width=1pt] (0,-0.1cm) rectangle ++(\chapboxwidth,0.7cm);
+		% Here, we force the label to be "Appendix" instead of \@chapapp.
+		\node[anchor=west, text=MyColor, font=\sc\bfseries\Large] (C) at (0.5cm,0.2cm)
+		{\underline{Appendix\ \thecontentslabel}};
+	\end{tikzpicture}\quad%
+	\color{MyColor}\large\sc\bfseries
+}{}
+{}%
+{%
+	\;\titlerule\;\large\sc\bfseries Page \thecontentspage%%
+}
+
+
 \include{appendix/appendix1.tex}
 
+% Start of bibliography
 \newpage
-\begin{singlespace} % bib should be single spaced
-	% \printbibliography[heading=bibintoc] % prints bib and adds to toc
-	\printbibliography[heading=mybibheading] % prints bib as non chapter
-\end{singlespace}
 
+\titlecontents{chapter}[\TOCindent] % change the toc for the bibliography, see preamble
+{%
+	\addvspace{30pt}%
+	\begin{tikzpicture}[baseline=(C.base)]
+		\draw[fill=white, draw=white, line width=1pt] (0,-0.1cm) rectangle ++(\chapboxwidth,0.7cm);
+		% Here, we force the label to be "Bibliograhpy" instead of \@chapapp.
+		\node[anchor=west, text=MyColor, font=\sc\bfseries\Large] (C) at (0.5cm,0.2cm)
+		{\underline{Bibliography}};
+	\end{tikzpicture}\quad%
+	\color{MyColor}\large\sc\bfseries
+}{}
+{}%
+{%
+	\;\titlerule\;\large\sc\bfseries Page \thecontentspage%%
+}
+\begin{singlespace} % bib should be single spaced
+	\printbibliography[heading=bibintoc] % prints bib and adds to toc
+\end{singlespace}
 
 \end{document}
 
