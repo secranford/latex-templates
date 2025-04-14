@@ -108,8 +108,11 @@
             ]
         }
     ],
+    "editor.wordWrap": "on",
     "latex-workshop.latex.build.clearLog.everyRecipeStep.enabled": false,
+    "latex-workshop.latex.autoBuild.run": "never",
     "latex-workshop.latex.recipe.default": "latexmk 🔃",
     "latex-workshop.formatting.latex": "latexindent",
+    "latex-workshop.intellisense.citation.label": "bibtex key",
     "latex-workshop.bibtex-format.sort.enabled": true
 }
