@@ -58,6 +58,14 @@
                 "%DOCFILE%"
             ],
             "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
         }
     ],
     "latex-workshop.latex.recipes": [
@@ -89,6 +97,15 @@
             ]
         },
         {
+            "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
             "name": "xelatex ➞ biber ➞ xelatex`×2",
             "tools": [
                 "xelatex",
@@ -98,10 +115,29 @@
             ]
         },
         {
+            "name": "xelatex ➞ bibtex ➞ xelatex`×2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
             "name": "pdflatex ➞ biber ➞ pdflatex*2 with Nomenclature",
             "tools": [
                 "pdflatex",
                 "biber",
+                "makeindex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "pdflatex ➞ bibtex ➞ pdflatex*2 with Nomenclature",
+            "tools": [
+                "pdflatex",
+                "bibtex",
                 "makeindex",
                 "pdflatex",
                 "pdflatex"

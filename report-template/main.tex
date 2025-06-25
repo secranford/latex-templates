@@ -1,5 +1,17 @@
 % Specifies the document type as an article, with 12pt font size, A4 paper size, hyperlinks, and a title page.
-\documentclass[12pt,a4paper,titlepage]{article}
+\documentclass[12pt,letterpaper,titlepage]{article}
+
+%============================FILE STRUCTURE=============================
+% main.tex is the main latex file 
+% preamble.tex is where the packages are loaded
+% colors.tex is where the colors are defined
+% sections contains the section tex files of the report
+% references.bib is the bibliography file
+% appendix contains any appendices tex files
+% images contains any images used in the report
+
+% \input is used to load definitions from other files, it is similar to copying and pasting the contents of the file into the main file.
+% \include is used to load entire files, it is similar to \input but it auto puts \clearpage before and after the file and also generates aux files for the included files. It is typically used for larger sections or chapters in a document.
 
 \input{preamble.tex} % this is where the packages are loaded
 

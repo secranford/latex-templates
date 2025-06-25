@@ -8,6 +8,7 @@
 - `bib-styles` contains latex bibliography style or document class files, more below.
 - `AIAA-official-template` contains AIAA's latex template, with some edits I made for easier use or nicer output.
 - `latex-workshop-settings.json` are the VS Code specific settings I use for formatting and LaTeX workshop.
+- Paper styles: typically, in the US, we should use `letterpaper` which is 8.5in x 11in. Internationally, A4 paper is used and is 210 mm × 297 mm and is `a4` in the LaTeX document class call. 
 
 ## Usage
 1. Pull down repo.
