@@ -2,8 +2,11 @@
 
 - This is a Repo to store my different LaTeX files, examples, and templates for my own use or for sharing with others.
 - `original-files` is a repo containing the LaTeX template files from [@SeniorMars' repository][senior-mars-repo]. 
-- `notes-template` is a repo adapted from that template to suit my own needs and preferences for taking notes on different topics.
+- `notes-template` is a repo adapted from that template to suit my own needs and preferences for taking notes on different topics. I try to continuously update it to make it better. This does mean that it might not be completely stable.
+- `report-template` is a template for doing a report for a project in LaTeX. It also serves as my go between for notes until `notes-template` is more stable.
 - `standalone` is a repo for using the standalone class to export equations or figures made in LaTeX, i.e. create a pdf of an equation or TikZ figure exactly so it can be inserted in a document or presentation. 
+- `bib-styles` contains latex bibliography style or document class files, more below.
+- `AIAA-official-template` contains AIAA's latex template, with some edits I made for easier use or nicer output.
 - `latex-workshop-settings.json` are the VS Code specific settings I use for formatting and LaTeX workshop.
 
 ## Usage
@@ -30,7 +33,7 @@
 - LaTeX workshop is the VS Code extension I use. It has many nice features and good [documentation][lt-work]. Use `latexmk` for building (this is how Overleaf and many compilers auto handle compiling). 
 
 ## LaTeX Workshop Tips:
-
+- Clicking the run button in VS Code will call your `latexmk` recipe from your specific `settings.json` file and build your LaTeX document, it should also work out of the box even if you don't put custom settings in. On the left banner in VS Code, you should also see a TeX button. If you click on that you will see more LaTeX specific options, this can be very useful. `latexmk -C` will clean all the generated files from workspace such as the pdf and aux files, this is a useful debugging step. If you click on the dual pane button with a magnifying glass in the upper right corner while in your LaTeX document, the generated pdf will be opened in split view. You can also do `ctrl + k` then let go and press `v` to achieve the same thing. Some special uses do need defined recipes such as generating nomenclature sections, so make sure to define the build recipe and tools and use it at least the first time you generate a special section. When you use special recipes, make sure you are using the correct one based on your bibliography manager i.e. `biber` or `bibtex`!
 - [This][lt-work-tips-vid] video has some useful tips on setting up and getting good utilization out of LaTeX workshop
 - I have also included my latex-workshop specific VS Code settings.json that are helpful for getting formatting and intellisense. While some of the options I have turned on are the "defaults", I have found that they are not always respected especially if going back and forth from wsl and windows.
 - SyncTeX compatibility allows you to navigate the pdf and code through eachother. You can `ctrl + click` in the pdf to be taken to the place in the code, it will also flash highlight the specific code yellow. Using `ctrl + alt + j` in the code location to be taken to the pdf location, it will also flash highlight the specic pdf section red.

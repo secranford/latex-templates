@@ -1,0 +1,16 @@
+\nomenclatureentry{\(\delta \)\(\delta \)@[{\(\delta \)}]\begingroup Flow and geometric specific characteristic length scale\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(\delta _\nu \)\(\delta _\nu \)@[{\(\delta _\nu \)}]\begingroup Viscous length scale\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(u_\tau \)\(u_\tau \)@[{\(u_\tau \)}]\begingroup Friction velocity $\left (\sqrt {\frac {\tau _w}{\rho _w}}\right )$\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(Re_\tau \)\(Re_\tau \)@[{\(Re_\tau \)}]\begingroup Friction Reynolds number $\left (\frac {u_\tau \delta }{\nu _w}\right )$\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(Re_{\tau _i}\)\(Re_{\tau _i}\)@[{\(Re_{\tau _i}\)}]\begingroup Equivalent friction Reynolds number from transformation "i"\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(\tau _w\)\(\tau _w\)@[{\(\tau _w\)}]\begingroup Wall shear stress\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(\rho \)\(\rho \)@[{\(\rho \)}]\begingroup Density\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(\mu \)\(\mu \)@[{\(\mu \)}]\begingroup Dynamic viscosity\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(\nu \)\(\nu \)@[{\(\nu \)}]\begingroup Kinematic viscosity $\left (\frac {\mu }{\rho }\right )$\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(y^{+}\)\(y^{+}\)@[{\(y^{+}\)}]\begingroup Nondimensional wall normal distance $\left (\frac {u_\tau y}{\nu }\right )$\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(u^{+}\)\(u^{+}\)@[{\(u^{+}\)}]\begingroup Nondimensional velocity $\left (\frac {\langle U \rangle }{u_\tau }\right )$\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(Y^{+}_{VD}\)\(Y^{+}_{VD}\)@[{\(Y^{+}_{VD}\)}]\begingroup Van Driest nondimensional wall normal distance\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(U^{+}_{VD}\)\(U^{+}_{VD}\)@[{\(U^{+}_{VD}\)}]\begingroup Van Driest nondimensional velocity\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(Y^{+}_{TL}\)\(Y^{+}_{TL}\)@[{\(Y^{+}_{TL}\)}]\begingroup Trettel-Larsson nondimensional wall normal distance\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(U^{+}_{TL}\)\(U^{+}_{TL}\)@[{\(U^{+}_{TL}\)}]\begingroup Trettel-Larsson nondimensional velocity\nomeqref {0}|nompageref}{i}
+\nomenclatureentry{\(\langle \ \rangle \)\(\langle \ \rangle \)@[{\(\langle \ \rangle \)}]\begingroup Mean value\nomeqref {0}|nompageref}{i}

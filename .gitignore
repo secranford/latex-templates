@@ -17,3 +17,5 @@
 *.vrb
 *.lof
 *.lot
+*.nlo
+*.nls
